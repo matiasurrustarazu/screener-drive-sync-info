@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Uso, acceso, conservación y revocación de datos en Screener Drive Sync.">
+  <title>Privacidad — Screener Drive Sync</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; background: #f6f7f9; color: #243041; font: 17px/1.65 system-ui, sans-serif; }
+    main { max-width: 760px; margin: 48px auto; padding: 32px; background: #fff; border: 1px solid #e1e5eb; border-radius: 12px; }
+    h1, h2 { color: #15243b; line-height: 1.25; }
+    h1 { margin-top: 0; font-size: 2rem; }
+    h2 { margin-top: 32px; font-size: 1.25rem; }
+    a { color: #174d91; text-underline-offset: 3px; }
+    code { font-size: .95em; }
+    footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e1e5eb; }
+    @media (max-width: 600px) { main { margin: 16px; padding: 24px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Privacidad de Screener Drive Sync</h1>
+    <p>Screener Drive Sync conecta la cuenta de Google Drive autorizada por el propietario con las corridas privadas de Dashboard Nodriza. Esta información describe esa integración y las copias de archivos que utiliza.</p>
+
+    <h2>Datos a los que accede</h2>
+    <p>La integración lee y descarga archivos de insumos y caches, y crea o actualiza resultados en Drive. También consulta metadata para localizar archivos y comprobar las transferencias: nombres, rutas, tamaños, fechas de modificación y hashes cuando están disponibles.</p>
+    <p>Los archivos del proyecto pueden contener información financiera, parámetros de trabajo, carteras y resultados de análisis. Su contenido depende de los insumos que incorpora el propietario. No se presume que todos los archivos sean datos públicos.</p>
+    <p>El permiso OAuth de Drive es amplio: permite ver y administrar los archivos accesibles para la cuenta autorizada. Los procesos habituales usan una raíz de proyecto y filtros para <code>Input Data</code> y <code>Output</code>. Esos controles delimitan la operación; no convierten el permiso OAuth en acceso exclusivo a esas carpetas.</p>
+
+    <h2>Finalidad del uso</h2>
+    <p>Los archivos y su metadata se utilizan para preparar y ejecutar las corridas de Dashboard Nodriza, recuperar históricos y caches, verificar consistencia y conservar los resultados autorizados. Los datos obtenidos mediante esta integración no se usan para publicidad ni se venden.</p>
+
+    <h2>Dónde se procesan y quién puede acceder</h2>
+    <p>Las transferencias se realizan con rclone desde la estación de trabajo local o desde runners de GitHub Actions asociados al repositorio privado. Google procesa las solicitudes de Drive y almacena los archivos que permanecen allí. GitHub procesa los jobs y puede conservar logs, caches y artifacts según la configuración del repositorio y del servicio.</p>
+    <p>El acceso operativo corresponde al propietario y a las personas o procesos que este autorice mediante los permisos del equipo, de Drive y del repositorio. La privacidad del repositorio no sustituye la revisión de esos permisos. Google y GitHub también intervienen como proveedores de infraestructura, conforme a las condiciones y controles de sus servicios.</p>
+    <p>La transferencia a GitHub Actions implica procesamiento en infraestructura de nube; los datos no permanecen exclusivamente en el equipo local. Compartir un archivo de Drive, un output o un artifact mediante sus propios permisos también puede ampliar quién lo recibe.</p>
+
+    <h2>Credenciales de autorización</h2>
+    <p>Los tokens y la configuración OAuth de rclone se conservan en archivos privados para la ejecución local y en un Secret de GitHub para las corridas remotas. El workflow crea el archivo de configuración del runner con permisos de acceso limitados al usuario del proceso. El propietario debe proteger también los respaldos privados y los permisos de acceso a esos entornos.</p>
+    <p>La contraseña de la cuenta de Google se introduce ante Google durante la autorización, no como un insumo de Dashboard Nodriza. Estas páginas no solicitan credenciales, no contienen formularios y no incorporan scripts de seguimiento ni recursos de terceros.</p>
+
+    <h2>Visitas a estas páginas</h2>
+    <p>El código de estas páginas no incorpora analítica propia. Si se alojan en GitHub Pages, GitHub registra y conserva la dirección IP de las visitas por motivos de seguridad, según su documentación. La ausencia de scripts de seguimiento propios no impide ese registro del proveedor de alojamiento.</p>
+
+    <h2>Conservación y eliminación</h2>
+    <p>No se aplica un plazo único de conservación a todos los archivos de la integración. La conservación de insumos, históricos, outputs, caches y respaldos depende de las decisiones del propietario y de la configuración de cada ubicación. GitHub y Google pueden aplicar sus propias reglas de almacenamiento y conservación.</p>
+    <p>Para eliminar datos, el propietario debe gestionar las copias que correspondan en Drive, el equipo local y GitHub, incluidos respaldos, caches y artifacts. Eliminar una copia no elimina automáticamente las demás.</p>
+
+    <h2>Revocar el acceso</h2>
+    <p>El propietario puede revisar y retirar el acceso de Screener Drive Sync en las conexiones con aplicaciones de su cuenta de Google. Al retirarlo, la integración deja de contar con esa autorización para acceder a Drive y las próximas transferencias pueden fallar hasta que se autorice de nuevo.</p>
+    <p>Revocar la autorización no borra automáticamente los archivos de Drive, los resultados generados ni las copias ya descargadas o conservadas en otros entornos. El propietario puede detener las corridas y retirar además la configuración local y el Secret de GitHub si deja de utilizar la integración.</p>
+
+    <footer>
+      <a href="index.html">Screener Drive Sync</a>
+    </footer>
+  </main>
+</body>
+</html>

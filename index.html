@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Screener Drive Sync conecta Google Drive con las corridas privadas de Dashboard Nodriza.">
+  <title>Screener Drive Sync — Dashboard Nodriza</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; background: #f6f7f9; color: #243041; font: 17px/1.65 system-ui, sans-serif; }
+    main { max-width: 760px; margin: 48px auto; padding: 32px; background: #fff; border: 1px solid #e1e5eb; border-radius: 12px; }
+    h1, h2 { color: #15243b; line-height: 1.25; }
+    h1 { margin-top: 0; font-size: 2rem; }
+    h2 { margin-top: 32px; font-size: 1.25rem; }
+    a { color: #174d91; text-underline-offset: 3px; }
+    code { font-size: .95em; }
+    footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e1e5eb; }
+    @media (max-width: 600px) { main { margin: 16px; padding: 24px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Screener Drive Sync</h1>
+    <p>Conexión de Google Drive para las corridas privadas de Dashboard Nodriza.</p>
+
+    <h2>Para qué se usa</h2>
+    <p>Dashboard Nodriza procesa información financiera y genera un dashboard, históricos y controles de calidad. Screener Drive Sync permite al propietario descargar insumos y archivos de trabajo desde Google Drive, y guardar allí los resultados de las corridas autorizadas.</p>
+    <p>La integración se utiliza desde una estación de trabajo local y desde GitHub Actions en un repositorio privado. No es un servicio de registro público ni una aplicación para conectar cuentas de otras personas.</p>
+
+    <h2>Cómo funciona</h2>
+    <p>La autorización utiliza un cliente OAuth de escritorio con rclone. Los procesos trabajan sobre una raíz de proyecto configurada en Drive y las carpetas <code>Input Data</code> y <code>Output</code>. Descargan insumos y caches seleccionados, comprueban archivos y publican los outputs habilitados por los controles de la corrida. La publicación puede crear archivos nuevos o actualizar archivos existentes.</p>
+    <p>Para identificar y verificar los archivos, la integración consulta su contenido y metadata, como nombres, tamaños, fechas de modificación y hashes disponibles.</p>
+
+    <h2>Permiso sobre Google Drive</h2>
+    <p>El permiso solicitado es el acceso amplio de Drive, que permite ver y administrar los archivos accesibles para la cuenta autorizada. Su alcance técnico es mayor que las dos carpetas del proyecto.</p>
+    <p>La raíz de proyecto, las rutas y los filtros de los procesos delimitan el uso operativo. Son controles de configuración y código: no son una restricción del permiso OAuth impuesta por Google. El propietario controla la cuenta autorizada y la configuración de las corridas.</p>
+
+    <h2>Privacidad y control</h2>
+    <p>Los datos se utilizan para operar Dashboard Nodriza. No se utilizan para publicidad ni se venden. La autorización y las copias de datos requieren cuidado tanto en la estación de trabajo como en los servicios de Google y GitHub.</p>
+    <p>El propietario puede revocar el acceso desde su cuenta de Google. La revocación detiene el acceso autorizado a Drive; no elimina automáticamente los archivos y copias que ya existen.</p>
+
+    <footer>
+      <a href="privacy.html">Información de privacidad</a>
+    </footer>
+  </main>
+</body>
+</html>
